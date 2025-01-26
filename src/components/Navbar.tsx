@@ -1,6 +1,6 @@
 "use client";
-
 import { useState, useEffect } from "react";
+import Link from "next/link"; // Import Link จาก next/link
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -48,20 +48,20 @@ export default function Navbar() {
       }}
     >
       <div className="container mx-auto flex justify-between items-center">
-        <a href="/" style={{ color: textColor }} className="coremed text-xl font-bold">
+        <Link href="/" style={{ color: textColor }} className="coremed text-xl font-bold">
           COREMed
-        </a>
+        </Link>
 
         <div className="hidden md:flex space-x-4 textnavbar">
-          <a href="/services" style={{ color: textColor }} className="hover:text-gray-600">
+          <Link href="/services" style={{ color: textColor }} className="hover:text-gray-600">
             Services
-          </a>
-          <a href="/about" style={{ color: textColor }} className="hover:text-gray-600">
+          </Link>
+          <Link href="/about" style={{ color: textColor }} className="hover:text-gray-600">
             About Me
-          </a>
-          <a href="/contact" style={{ color: textColor }} className="hover:text-gray-600">
+          </Link>
+          <Link href="/contact" style={{ color: textColor }} className="hover:text-gray-600">
             Contact Us
-          </a>
+          </Link>
         </div>
 
         <button
@@ -119,27 +119,27 @@ export default function Navbar() {
             </div>
             <div className="text-center content-center flex flex-col flex-wrap">
               <div className="p-4 text-white font-bold flex flex-col w-50">
-                <a
+                <Link
                   href="/services"
                   className="block py-10 hover:text-gray-100"
                   onClick={() => setIsOpen(false)}
                 >
                   Services
-                </a>
-                <a
+                </Link>
+                <Link
                   href="/about"
                   className="block py-10 hover:text-gray-100"
                   onClick={() => setIsOpen(false)}
                 >
                   About Me
-                </a>
-                <a
+                </Link>
+                <Link
                   href="/contact"
                   className="block py-10 hover:text-gray-100"
                   onClick={() => setIsOpen(false)}
                 >
                   Contact Us
-                </a>
+                </Link>
               </div>
             </div>
           </div>

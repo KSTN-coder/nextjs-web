@@ -1,36 +1,38 @@
 // src/components/ContactForm.tsx
-'use client';
+"use client";
 
-import { useState } from 'react';
+import { useState } from "react";
 
 export default function ContactForm() {
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [message, setMessage] = useState('');
-  const [status, setStatus] = useState('');
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [message, setMessage] = useState("");
+  const [status, setStatus] = useState("");
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    const res = await fetch('/api/send-email', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ name, email, message }),
-    });
+    try {
+      const res = await fetch("/api/send-email", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ name, email, message }),
+      });
 
-    const result = await res.json();
-    if (res.ok) {
-      setStatus('Message sent successfully!');
-    } else {
-      setStatus('Failed to send message.');
+      if (res.ok) {
+        setStatus("Message sent successfully!");
+      } else {
+        setStatus("Failed to send message.");
+      }
+    } catch (error) {
+      console.error("Error sending message:", error);
+      setStatus("Failed to send message.");
     }
   };
 
   return (
-    <div>
-            <h2 className="text-2xl font-semibold">ติดต่อเรา</h2>
     <form onSubmit={handleSubmit} className="space-y-4">
       <div>
         <label className="block">Name:</label>
@@ -64,8 +66,7 @@ export default function ContactForm() {
       <button type="submit" className="px-4 py-2 bg-blue-500 text-white rounded">
         Send
       </button>
-      {status && <p>{status}</p>}
+      {status && <p className="mt-4 text-center">{status}</p>}
     </form>
-    </div>
   );
 }
