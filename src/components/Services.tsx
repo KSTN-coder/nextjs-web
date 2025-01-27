@@ -15,8 +15,8 @@ export default function Services() {
 
   return (
     <div className="inset-0 mx-auto p-4 font-bold text-center my-8 flex flex-col justify-between">
-      <h1 className="text-4xl font-bold text-center my-8 text-[#2b5d9f]">Our Services</h1>
-      <div className="description-about mx-auto p-4 font-bold text-center max-w-5xl">
+      <h1 className="text-4xl font-bold text-center my-8 text-[#2b5d9f]" id="Services">Our Services</h1>
+      <div className="description-about mx-auto p-4 font-bold text-center my-8 max-w-5xl">
         <section>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
             {/* Topic 1 */}
@@ -25,7 +25,7 @@ export default function Services() {
                 className="flex justify-between items-center cursor-pointer"
                 onClick={() => toggleDescription("topic1")}
               >
-                <h2 className=" services-card font-semibold">
+                <h2 className=" services-card w-4/5 font-semibold">
                   การออกแบบงานวิจัยและระเบียบวิธีวิจัย
                   <br /> (Research Design & Methodology)
                 </h2>
@@ -44,7 +44,7 @@ export default function Services() {
                 className="flex justify-between items-center cursor-pointer"
                 onClick={() => toggleDescription("topic2")}
               >
-                <h2 className=" services-card font-semibold">
+                <h2 className=" services-card w-4/5 font-semibold">
                   การวิเคราะห์ข้อมูลและการแปลผล
                   <br />
                   (Data Analysis & Interpretation)
@@ -65,7 +65,7 @@ export default function Services() {
                 className="flex justify-between items-center cursor-pointer"
                 onClick={() => toggleDescription("topic3")}
               >
-                <h2 className=" services-card font-semibold">
+                <h2 className=" services-card w-4/5 font-semibold">
                   การทบทวนวรรณกรรมเชิงระบบและการวิเคราะห์อภิมาน
                   <br /> (Systematic Reviews & Meta-Analysis)
                 </h2>
@@ -84,7 +84,7 @@ export default function Services() {
                 className="flex justify-between items-center cursor-pointer"
                 onClick={() => toggleDescription("topic4")}
               >
-                <h2 className=" services-card font-semibold">
+                <h2 className=" services-card w-4/5 font-semibold">
                   การเขียนและพัฒนาข้อเสนอโครงการวิจัย
                   <br /> (Grant Writing & Proposal Development)
                 </h2>
@@ -103,7 +103,7 @@ export default function Services() {
                 className="flex justify-between items-center cursor-pointer"
                 onClick={() => toggleDescription("topic5")}
               >
-                <h2 className=" services-card font-semibold">
+                <h2 className=" services-card w-4/5 font-semibold">
                   ให้คำปรึกษาเรื่องการตีพิมพ์
                   <br /> (Publication Support)
                 </h2>
@@ -123,7 +123,7 @@ export default function Services() {
                 className="flex justify-between items-center cursor-pointer"
                 onClick={() => toggleDescription("topic6")}
               >
-                <h2 className=" services-card font-semibold">
+                <h2 className=" services-card w-4/5 font-semibold">
                   ให้คำปรึกษาเรื่องเอกสารและแนวทางสำหรับการขอทดลองในมนุษย์
                   <br /> (IRB Submission Support)
                 </h2>
@@ -160,7 +160,7 @@ export default function Services() {
                 className="flex justify-between items-center cursor-pointer"
                 onClick={() => toggleDescription("topic7")}
               >
-                <h2 className=" services-card font-semibold">
+                <h2 className=" services-card w-4/5 font-semibold">
                   ให้คำปรึกษาสำหรับแพทย์ชำนาญการและชำนาญการพิเศษ
                 </h2>
                 <ArrowIcon expanded={expandedTopics["topic7"]} />

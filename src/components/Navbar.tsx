@@ -53,13 +53,13 @@ export default function Navbar() {
         </Link>
 
         <div className="hidden md:flex space-x-4 textnavbar">
-          <Link href="/services" style={{ color: textColor }} className="hover:text-gray-600">
+          <Link href="#Services" style={{ color: textColor }} className="hover:text-gray-600">
             Services
           </Link>
-          <Link href="/about" style={{ color: textColor }} className="hover:text-gray-600">
+          <Link href="#AboutUs" style={{ color: textColor }} className="hover:text-gray-600">
             About Me
           </Link>
-          <Link href="/contact" style={{ color: textColor }} className="hover:text-gray-600">
+          <Link href="#ContactForm" style={{ color: textColor }} className="hover:text-gray-600">
             Contact Us
           </Link>
         </div>
@@ -120,21 +120,21 @@ export default function Navbar() {
             <div className="text-center content-center flex flex-col flex-wrap">
               <div className="p-4 text-white font-bold flex flex-col w-50">
                 <Link
-                  href="/services"
+                  href="#Services"
                   className="block py-10 hover:text-gray-100"
                   onClick={() => setIsOpen(false)}
                 >
                   Services
                 </Link>
                 <Link
-                  href="/about"
+                  href="#AboutUs"
                   className="block py-10 hover:text-gray-100"
                   onClick={() => setIsOpen(false)}
                 >
                   About Me
                 </Link>
                 <Link
-                  href="/contact"
+                  href="#ContactForm"
                   className="block py-10 hover:text-gray-100"
                   onClick={() => setIsOpen(false)}
                 >

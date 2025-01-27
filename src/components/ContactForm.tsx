@@ -1,15 +1,27 @@
-// src/components/ContactForm.tsx
 "use client";
 
 import { useState } from "react";
 
 export default function ContactForm() {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [message, setMessage] = useState("");
-  const [status, setStatus] = useState("");
+  const [formData, setFormData] = useState({
+    firstName: "",
+    lastName: "",
+    organization: "",
+    position: "",
+    phone: "",
+    email: "",
+    message: "",
+  });
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const [status, setStatus] = useState("");
+  const [showPopup, setShowPopup] = useState(false);
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prevData) => ({ ...prevData, [name]: value }));
+  };
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
@@ -18,11 +30,20 @@ export default function ContactForm() {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ name, email, message }),
+        body: JSON.stringify(formData),
       });
 
       if (res.ok) {
-        setStatus("Message sent successfully!");
+        setStatus("THANK YOU FOR CONTACT US !");
+        setFormData({
+          firstName: "",
+          lastName: "",
+          organization: "",
+          position: "",
+          phone: "",
+          email: "",
+          message: "",
+        });
       } else {
         setStatus("Failed to send message.");
       }
@@ -30,43 +51,135 @@ export default function ContactForm() {
       console.error("Error sending message:", error);
       setStatus("Failed to send message.");
     }
+    setShowPopup(true); // เปิด Popup
+    setTimeout(() => setShowPopup(false), 3000); // ปิด Popup อัตโนมัติหลัง 3 วินาที
   };
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-4">
-      <div>
-        <label className="block">Name:</label>
-        <input
-          type="text"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-          className="w-full p-2 border rounded"
-          required
-        />
+    <form onSubmit={handleSubmit} className="space-y-4" id="ContactForm">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div>
+          <label className="block text-sm font-medium text-gray-700">
+            First Name <span className="text-red-500">*</span>
+          </label>
+          <input
+            type="text"
+            name="firstName"
+            value={formData.firstName}
+            onChange={handleChange}
+            className="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
+            required
+          />
+        </div>
+        <div>
+          <label className="block text-sm font-medium text-gray-700">
+            Last Name <span className="text-red-500">*</span>
+          </label>
+          <input
+            type="text"
+            name="lastName"
+            value={formData.lastName}
+            onChange={handleChange}
+            className="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
+            required
+          />
+        </div>
       </div>
-      <div>
-        <label className="block">Email:</label>
-        <input
-          type="email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          className="w-full p-2 border rounded"
-          required
-        />
+
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div>
+          <label className="block text-sm font-medium text-gray-700">
+            Organization
+          </label>
+          <input
+            type="text"
+            name="organization"
+            value={formData.organization}
+            onChange={handleChange}
+            className="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
+          />
+        </div>
+        <div>
+          <label className="block text-sm font-medium text-gray-700">
+            Position
+          </label>
+          <input
+            type="text"
+            name="position"
+            value={formData.position}
+            onChange={handleChange}
+            className="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
+          />
+        </div>
       </div>
+
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div>
+          <label className="block text-sm font-medium text-gray-700">
+            Phone <span className="text-red-500">*</span>
+          </label>
+          <input
+            type="text"
+            name="phone"
+            value={formData.phone}
+            onChange={handleChange}
+            className="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
+            required
+          />
+        </div>
+        <div>
+          <label className="block text-sm font-medium text-gray-700">
+            Email <span className="text-red-500">*</span>
+          </label>
+          <input
+            type="email"
+            name="email"
+            value={formData.email}
+            onChange={handleChange}
+            className="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
+            required
+          />
+        </div>
+      </div>
+
       <div>
-        <label className="block">Message:</label>
+        <label className="block text-sm font-medium text-gray-700">
+          Message <span className="text-red-500">*</span>
+        </label>
         <textarea
-          value={message}
-          onChange={(e) => setMessage(e.target.value)}
-          className="w-full p-2 border rounded"
+          name="message"
+          value={formData.message}
+          onChange={handleChange}
+          rows={4}
+          className="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
           required
         />
       </div>
-      <button type="submit" className="px-4 py-2 bg-blue-500 text-white rounded">
+
+      <button
+        type="submit"
+        className="w-full bg-black text-white font-semibold py-2 px-4 rounded-md hover:bg-blue-700 shadow-lg"
+      >
         Send
       </button>
-      {status && <p className="mt-4 text-center">{status}</p>}
+
+      
+      {/* Popup */}
+      {showPopup && (
+        <div
+          className={`fixed top-10 left-1/2 transform -translate-x-1/2 bg-white p-4 rounded-lg shadow-lg border ${
+            status.includes("Failed") ? "border-red-500" : "border-blue-500"
+          }`}
+        >
+          <p
+            className={`text-center font-bold ${
+              status.includes("Failed") ? "text-red-500" : "text-blue-500"
+            }`}
+          >
+            {status}
+          </p>
+        </div>
+      )}
     </form>
   );
 }
