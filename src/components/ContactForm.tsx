@@ -15,15 +15,16 @@ export default function ContactForm() {
 
   const [status, setStatus] = useState("");
   const [showPopup, setShowPopup] = useState(false);
+  
 
-  const handleChange = (e) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({ ...prevData, [name]: value }));
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-
+  
     try {
       const res = await fetch("/api/send-email", {
         method: "POST",
@@ -32,9 +33,9 @@ export default function ContactForm() {
         },
         body: JSON.stringify(formData),
       });
-
+  
       if (res.ok) {
-        setStatus("THANK YOU FOR CONTACT US !");
+        setStatus("THANK YOU FOR CONTACTING US!");
         setFormData({
           firstName: "",
           lastName: "",
@@ -51,6 +52,7 @@ export default function ContactForm() {
       console.error("Error sending message:", error);
       setStatus("Failed to send message.");
     }
+  
     setShowPopup(true); // เปิด Popup
     setTimeout(() => setShowPopup(false), 3000); // ปิด Popup อัตโนมัติหลัง 3 วินาที
   };
