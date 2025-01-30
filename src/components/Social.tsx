@@ -2,16 +2,24 @@ import { FaEnvelope, FaFacebook, FaLine, FaPhoneSquareAlt} from "react-icons/fa"
 
 export default function Social() {
   return (
-    <div className="p-6">
-      <h2 className="text-2xl font-semibold mb-4">Social Media</h2>
-      <ul className="text-gray-700 space-y-4">
+    <div className="p-6 max-w-2xl">
+      <h2 className="text-2xl font-semibold mb-4 text-[#2b5d9f]">Social Media</h2>
+      <ul className=" text-[#2b5d9f] space-y-4">
         <li className="flex items-center">
           <FaEnvelope className="h-5 w-5 mr-2 text-blue-500" />
-          <span>: info@core-med.org</span>
+          <a
+            href="mailto:info@core-med.org"
+            target="_blank"
+          >: info@core-med.org</a>
         </li>
         <li className="flex items-center">
           <FaFacebook className="h-5 w-5 mr-2 text-blue-700" />
-          <span>: COREMed</span>
+          <a
+            href="https://www.facebook.com/profile.php?id=61571849480592"
+            target="_blank"
+          >
+            : COREMed
+          </a>
         </li>
         <li className="flex items-center">
           <FaLine className="h-5 w-5 mr-2 text-green-500" />
@@ -19,14 +27,16 @@ export default function Social() {
             href="https://line.me/R/ti/p/@807vdzks?oat_content=url&ts=01201915"
             target="_blank"
             rel="noopener noreferrer"
-            className="hover:underline"
           >
             : @COREMed
           </a>
         </li>
         <li className="flex items-center">
           <FaPhoneSquareAlt className="h-5 w-5 mr-2 text-gray-700" />
-          <span>: 091-852-0295</span>
+          <a
+            href="tel:09-1852-0295"
+            target="_blank"
+          >: 091-852-0295</a>
         </li>
       </ul>
     </div>

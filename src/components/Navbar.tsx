@@ -1,6 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
 import Link from "next/link"; // Import Link จาก next/link
+import Image from "next/image";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -23,9 +24,18 @@ export default function Navbar() {
   }, []);
 
   const bgOpacity = Math.min((scrollPercentage - 1) / 14, 1);
-  const textColor = `rgb(${Math.round(255 * (1 - bgOpacity))}, ${Math.round(
-    255 * (1 - bgOpacity)
-  )}, ${Math.round(255 * (1 - bgOpacity))})`;
+  const targetR = 31,
+    targetG = 41,
+    targetB = 55; // ค่าเป้าหมาย
+  const baseR = 255,
+    baseG = 255,
+    baseB = 255; // ค่าเริ่มต้น (สีขาว)
+
+  const red = Math.round(baseR + (targetR - baseR) * bgOpacity);
+  const green = Math.round(baseG + (targetG - baseG) * bgOpacity);
+  const blue = Math.round(baseB + (targetB - baseB) * bgOpacity);
+
+  const textColor = `rgb(${red}, ${green}, ${blue})`;
 
   useEffect(() => {
     if (isOpen) {
@@ -48,18 +58,38 @@ export default function Navbar() {
       }}
     >
       <div className="container mx-auto flex justify-between items-center">
-        <Link href="/" style={{ color: textColor }} className="coremed text-xl font-bold">
-          COREMed
+        <Link
+          href="/"
+          className="coremed text-xl font-bold flex items-center gap-2"
+        >
+          <Image
+            src="/images/coremedlogo.png"
+            alt="CoreMed Logo"
+            width={220}
+            height={150}
+          />
         </Link>
 
         <div className="hidden md:flex space-x-4 textnavbar">
-          <Link href="#Services" style={{ color: textColor }} className="hover:text-gray-600">
+          <Link
+            href="#Services"
+            style={{ color: textColor }}
+            className="hover:text-gray-600"
+          >
             Services
           </Link>
-          <Link href="#AboutUs" style={{ color: textColor }} className="hover:text-gray-600">
-            About Me
+          <Link
+            href="#AboutUs"
+            style={{ color: textColor }}
+            className="hover:text-gray-600"
+          >
+            About Us
           </Link>
-          <Link href="#ContactForm" style={{ color: textColor }} className="hover:text-gray-600">
+          <Link
+            href="#ContactForm"
+            style={{ color: textColor }}
+            className="hover:text-gray-600"
+          >
             Contact Us
           </Link>
         </div>
@@ -67,6 +97,7 @@ export default function Navbar() {
         <button
           onClick={() => setIsOpen(!isOpen)}
           className="md:hidden focus:outline-none"
+          style={{ color: textColor }}
         >
           <svg
             className="w-6 h-6"
@@ -93,13 +124,15 @@ export default function Navbar() {
           ></div>
 
           <div
-            className="fixed top-0 right-0 bg-black text-gray-800 z-50 bg-opacity-90 transform transition-transform duration-300 ease-in-out"
+            className="fixed top-0 left-0 w-screen h-screen bg-black text-gray-800 z-50 bg-opacity-90 transform transition-transform duration-300 ease-in-out"
             onClick={(e) => e.stopPropagation()}
           >
-            <div className="p-4 text-right">
+            <div className="p-4 text-right ">
               <button
                 onClick={() => setIsOpen(false)}
                 className="text-gray-800 focus:outline-none"
+                
+                
               >
                 <svg
                   className="w-10 h-10 align-text-center text-white"
@@ -131,7 +164,7 @@ export default function Navbar() {
                   className="block py-10 hover:text-gray-100"
                   onClick={() => setIsOpen(false)}
                 >
-                  About Me
+                  About Us
                 </Link>
                 <Link
                   href="#ContactForm"

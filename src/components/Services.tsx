@@ -18,7 +18,7 @@ export default function Services() {
       <h1 className="text-4xl font-bold text-center my-8 text-[#2b5d9f]" id="Services">Our Services</h1>
       <div className="description-about mx-auto p-4 font-bold text-center my-8 max-w-5xl">
         <section>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
             {/* Topic 1 */}
             <div className="topic">
               <div

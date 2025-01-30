@@ -61,7 +61,7 @@ export default function ContactForm() {
     <form onSubmit={handleSubmit} className="space-y-4" id="ContactForm">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div>
-          <label className="block text-sm font-medium text-gray-700">
+          <label className="block text-sm font-medium  text-[#2b5d9f]">
             First Name <span className="text-red-500">*</span>
           </label>
           <input
@@ -74,7 +74,7 @@ export default function ContactForm() {
           />
         </div>
         <div>
-          <label className="block text-sm font-medium text-gray-700">
+          <label className="block text-sm font-medium  text-[#2b5d9f]">
             Last Name <span className="text-red-500">*</span>
           </label>
           <input
@@ -90,7 +90,7 @@ export default function ContactForm() {
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div>
-          <label className="block text-sm font-medium text-gray-700">
+          <label className="block text-sm font-medium  text-[#2b5d9f]">
             Organization
           </label>
           <input
@@ -102,7 +102,7 @@ export default function ContactForm() {
           />
         </div>
         <div>
-          <label className="block text-sm font-medium text-gray-700">
+          <label className="block text-sm font-medium  text-[#2b5d9f]">
             Position
           </label>
           <input
@@ -117,7 +117,7 @@ export default function ContactForm() {
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div>
-          <label className="block text-sm font-medium text-gray-700">
+          <label className="block text-sm font-medium  text-[#2b5d9f]">
             Phone <span className="text-red-500">*</span>
           </label>
           <input
@@ -130,7 +130,7 @@ export default function ContactForm() {
           />
         </div>
         <div>
-          <label className="block text-sm font-medium text-gray-700">
+          <label className="block text-sm font-medium  text-[#2b5d9f]">
             Email <span className="text-red-500">*</span>
           </label>
           <input
@@ -145,7 +145,7 @@ export default function ContactForm() {
       </div>
 
       <div>
-        <label className="block text-sm font-medium text-gray-700">
+        <label className="block text-sm font-medium  text-[#2b5d9f]">
           Message <span className="text-red-500">*</span>
         </label>
         <textarea
