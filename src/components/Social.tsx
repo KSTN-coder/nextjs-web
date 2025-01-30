@@ -34,9 +34,9 @@ export default function Social() {
         <li className="flex items-center">
           <FaPhoneSquareAlt className="h-5 w-5 mr-2 text-gray-700" />
           <a
-            href="tel:09-1852-0295"
+            href="tel:08-8851-2552"
             target="_blank"
-          >: 091-852-0295</a>
+          >: 088-851-2552</a>
         </li>
       </ul>
     </div>
